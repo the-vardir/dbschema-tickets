@@ -54,11 +54,11 @@
 		</table>
 	</schema>
 	<layout name="Default Diagram" id="8f4da721-9c33-4e8d-b162-9532885866b2" show_relation="columns" >
-		<entity schema="main_schema" name="ms_person" color="C1D8EE" x="380" y="475" />
 		<entity schema="main_schema" name="ms_company" color="C1D8EE" x="798" y="475" />
 		<entity schema="main_schema" name="ms_communication" color="C1D8EE" x="570" y="817" />
 		<entity schema="main_schema" name="ms_company_communication" color="C1D8EE" x="950" y="779" />
 		<entity schema="main_schema" name="ms_person_communication" color="C1D8EE" x="152" y="760" />
+		<entity schema="main_schema" name="ms_person" color="C1D8EE" x="589" y="475" />
 		<callout x="57" y="57" pointer="Round" >
 			<comment><![CDATA[- Right-click the diagram to create new tables. 
 - Double-click table headers to edit. 
