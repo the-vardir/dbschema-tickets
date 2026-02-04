@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="project-postgresql" database="PostgreSQL" id="11991ae6-1ef6-45f3-a6dd-cb92fd9faedc" >
+	<schema name="main_schema" >
+		<table name="ms_communication" prior="ms_communication" >
+			<column name="id" type="uuid" mandatory="y" />
+			<column name="type" type="text" />
+			<column name="value" type="text" />
+			<column name="is_public" type="boolean" />
+			<column name="attribute" type="text" />
+			<index name="pk_ms_communication" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="ms_company" prior="ms_com" >
+			<column name="id" type="uuid" mandatory="y" />
+			<column name="name" type="text" />
+			<column name="secondary_name" type="text" />
+			<column name="registration_number" type="text" />
+			<column name="type" prior="ty[e" type="text" />
+			<column name="regulation" type="text" />
+			<index name="pk_ms_company" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="ms_company_communication" prior="ms_company_communication" >
+			<column name="company_id" type="uuid" mandatory="y" />
+			<column name="communication_id" type="uuid" mandatory="y" />
+			<fk name="fk_ms_company_communication_company" to_schema="main_schema" to_table="ms_company" >
+				<fk_column name="company_id" pk="id" />
+			</fk>
+			<fk name="fk_ms_company_communication" to_schema="main_schema" to_table="ms_communication" >
+				<fk_column name="communication_id" pk="id" />
+			</fk>
+		</table>
+		<table name="ms_person" prior="ms_pers" >
+			<column name="id" type="uuid" mandatory="y" />
+			<column name="first_name" type="text" />
+			<column name="last_name" type="text" />
+			<column name="date_of_birth" type="date" />
+			<column name="status" type="bit" length="1" />
+			<index name="pk_ms_person" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="ms_person_communication" prior="ms_person_communication" >
+			<column name="person_id" type="uuid" mandatory="y" />
+			<column name="communication_id" type="uuid" mandatory="y" />
+			<fk name="fk_ms_person_communication_person" to_schema="main_schema" to_table="ms_person" >
+				<fk_column name="person_id" pk="id" />
+			</fk>
+			<fk name="fk_ms_person_communication" to_schema="main_schema" to_table="ms_communication" >
+				<fk_column name="communication_id" pk="id" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Default Diagram" id="8f4da721-9c33-4e8d-b162-9532885866b2" show_relation="columns" >
+		<entity schema="main_schema" name="ms_person" color="C1D8EE" x="380" y="475" />
+		<entity schema="main_schema" name="ms_company" color="C1D8EE" x="798" y="475" />
+		<entity schema="main_schema" name="ms_communication" color="C1D8EE" x="570" y="817" />
+		<entity schema="main_schema" name="ms_company_communication" color="C1D8EE" x="950" y="779" />
+		<entity schema="main_schema" name="ms_person_communication" color="C1D8EE" x="152" y="760" />
+		<callout x="57" y="57" pointer="Round" >
+			<comment><![CDATA[- Right-click the diagram to create new tables. 
+- Double-click table headers to edit. 
+- Get a better understanding of the schema by creating multiple diagrams.
+- Save the design to the model file, and deploy from 'Schema / Create into the database'.]]></comment>
+		</callout>
+	</layout>
+</project>
